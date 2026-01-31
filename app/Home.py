@@ -102,7 +102,7 @@ if st.button("Analisar"):
         st.json(analysis.technical.explain)
 
     # Persistência
-    uid = st.session_state.user["localId"]
+    uid = st.session_state.user.get("localId") or st.session_state.user.get("user_id")
     if st.toggle("Salvar esta análise no Firestore", value=False):
         save_analysis(uid=uid, symbol=symbol, payload=analysis.model_dump())
         st.success("Análise salva.")
