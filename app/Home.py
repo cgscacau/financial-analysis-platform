@@ -1,4 +1,11 @@
 import streamlit as st
+import sys
+from pathlib import Path
+# Ensure project root is on PYTHONPATH (Streamlit Cloud compatibility)
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 import pandas as pd
 
 from infra.firebase.auth import sign_in_email_password, sign_up_email_password
