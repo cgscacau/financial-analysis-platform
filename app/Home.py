@@ -28,7 +28,7 @@ def ensure_auth():
 
     with st.sidebar:
         st.header("Login")
-        mode = st.radio("", ["Entrar", "Criar conta"], horizontal=True)
+        mode = st.radio("Modo", ["Entrar", "Criar conta"], horizontal=True, label_visibility="collapsed")
         email = st.text_input("Email")
         password = st.text_input("Senha", type="password")
 
