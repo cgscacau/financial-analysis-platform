@@ -39,8 +39,10 @@ def ensure_auth():
                     st.session_state.user = user
                     upsert_user(uid=user["localId"], email=email)
                     st.success("Autenticado.")
+                try:
+                    upsert_user(uid=user["localId"], email=email)
                 except Exception as e:
-                    st.error("Falha no login. Verifique credenciais e se Auth Email/Senha está habilitado.")
+                    st.warning("Login OK, mas Firestore indisponível. Você pode usar o app; salvar dados ficará desativado.")
                     st.caption(str(e))
         else:
             if st.button("Criar conta"):
